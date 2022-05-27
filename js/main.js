@@ -8,5 +8,5 @@ async function makeReq(){
   const data = await res.json()
 
   console.log(data);
-  document.querySelector("#playerSelection").textContent = data.compRes
+  document.querySelector("#winLoseTie").textContent = data.gameRes
 }
