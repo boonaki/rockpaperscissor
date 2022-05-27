@@ -89,3 +89,11 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(8000);
+
+//contributors
+//deijnutz(she/they)#7606
+//Nepwright#9711
+//yoda300100#9626
+//M!RE5
+//cmite#0663
+//<3
