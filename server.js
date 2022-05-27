@@ -21,45 +21,46 @@ const server = http.createServer((req, res) => {
     if('pick' in params){
       if(gameSet.includes(params['pick'])){
         res.writeHead(200, {'Content-Type': 'application/json'});
+        //decides computer answer
         let handSignNum = Math.ceil(Math.random() * 3);
+        //create obj to compare comp ans / user ans
         const gameKey = {
-    rock: {
-      scissors: true,
-      paper: false,
-      rock: 'tie',
-    },
-    paper: {
-      scissors: false,
-      paper: 'tie',
-      rock: true,
-    },
-    scissors: {
-      scissors: 'tie',
-      paper: true,
-      rock: false,
-    },
-  };
-        	switch(handSignNum){
-          	case 1:
-            	handSigns = gameKey['scissors']
-            	break;
-            case 2:
-            	handSigns = gameKey['rock']
-              break;
-            case 3:
-            	handSigns = gameKey['paper']
-              break;
+          rock: {
+            scissors: true,
+            paper: false,
+            rock: 'tie',
+          },
+          paper: {
+            scissors: false,
+            paper: 'tie',
+            rock: true,
+          },
+          scissors: {
+            scissors: 'tie',
+            paper: true,
+            rock: false,
+          },
+        };
+        let handSigns = handSignNum === 1 ? 'rock': handSignNum === 2 ? 'paper' : 'scissors';
+        switch(handSignNum){
+        case 1:
+            handSigns = gameKey['rock'][pick]
+            break;
+        case 2:
+            handSigns = gameKey['paper'][pick]
+          break;
+        case 3:
+            handSigns = gameKey['scissors'][pick]
+          break;
           };
-          
            
           const objToJson = {
             // example: rock vs paper = false meaning player 1 lost
-          	compRes : gameKey[params['pick']][handSigns]
-            //gameRes : 
+          	gameRes : gameKey[params['pick']]
           }
         res.end(JSON.stringify(objToJson));
       }
-    }//student if
+    }
   }//else if
   else if (page == '/css/style.css'){
     fs.readFile('css/style.css', function(err, data) {
