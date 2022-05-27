@@ -17,8 +17,9 @@ const server = http.createServer((req, res) => {
     });
   }
   else if (page == '/api') {
-    if('rock' in params){
-      if(params['']== 'leon'){
+    const gameSet = ['rock', 'paper', 'scissors'];
+    if('pick' in params){
+      if(gameSet.includes(params['pick'])){
         res.writeHead(200, {'Content-Type': 'application/json'});
         let handSignNum = Math.ceil(Math.random() * 3);
         	switch(handSignNum){
@@ -33,7 +34,7 @@ const server = http.createServer((req, res) => {
               break;
           };
           
-           let key = {
+           const gameKey = {
     rock: {
       scissors: true,
       paper: false,
@@ -51,7 +52,8 @@ const server = http.createServer((req, res) => {
     },
   };
           const objToJson = {
-          	compRes : handSigns
+            // example: rock vs paper = false meaning player 1 lost
+          	compRes : gameKey[params['pick']][handSigns]
           }
         res.end(JSON.stringify(objToJson));
       }
