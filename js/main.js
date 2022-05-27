@@ -3,12 +3,12 @@ document.querySelector('#shoot').addEventListener('click', makeReq)
 
 async function makeReq(){
 
-  const userName = document.querySelector("#userName").value;
-  const res = await fetch(`/api?student=${userName}`)
+  const playerChoice = document.querySelector("#playerSelection").value;
+  const res = await fetch(`/api?pick=${playerChoice}`)
   const data = await res.json()
 
   console.log(data);
-  document.querySelector("#personName").textContent = data.name
-  document.querySelector("#personStatus").textContent = data.status
-  document.querySelector("#personOccupation").textContent = data.currentOccupation
+  document.querySelector("#playerSelection").textContent = data.compRes
+  document.querySelector("#").textContent = data.status
+  document.querySelector("#").textContent = data.currentOccupation
 }

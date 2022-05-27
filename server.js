@@ -17,32 +17,44 @@ const server = http.createServer((req, res) => {
     });
   }
   else if (page == '/api') {
-    if('student' in params){
-      if(params['student']== 'leon'){
+    if('rock' in params){
+      if(params['']== 'leon'){
         res.writeHead(200, {'Content-Type': 'application/json'});
-        let handSigns = Math.ceil(Math.random() * 3);
-        	switch(handSigns){
+        let handSignNum = Math.ceil(Math.random() * 3);
+        	switch(handSignNum){
           	case 1:
-            	'scissors'
+            	handSigns = 'scissors'
             	break;
             case 2:
-            	'rock'
+            	handSigns = 'rock'
               break;
             case 3:
-            	'paper'
+            	handSigns = 'paper'
               break;
           };
+          
+           let key = {
+    rock: {
+      scissors: true,
+      paper: false,
+      rock: 'tie',
+    },
+    paper: {
+      scissors: false,
+      paper: 'tie',
+      rock: true,
+    },
+    scissors: {
+      scissors: 'tie',
+      paper: true,
+      rock: false,
+    },
+  };
+          const objToJson = {
+          	compRes : handSigns
+          }
         res.end(JSON.stringify(objToJson));
-      }//student = leon
-      else if(params['student'] != 'leon'){
-        res.writeHead(200, {'Content-Type': 'application/json'});
-        const objToJson = {
-          name: "unknown",
-          status: "unknown",
-          currentOccupation: "unknown"
-        }
-        res.end(JSON.stringify(objToJson));
-      }//student != leon
+      }
     }//student if
   }//else if
   else if (page == '/css/style.css'){
