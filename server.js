@@ -41,7 +41,7 @@ const server = http.createServer((req, res) => {
             rock: false,
           },
         };
-        let handSigns = handSignNum === 1 ? 'rock': handSignNum === 2 ? 'paper' : 'scissors';
+        // let handSigns = handSignNum === 1 ? 'rock': handSignNum === 2 ? 'paper' : 'scissors';
         switch(handSignNum){
         case 1:
             handSigns = gameKey['rock'][pick]
@@ -56,7 +56,7 @@ const server = http.createServer((req, res) => {
            
           const objToJson = {
             // example: rock vs paper = false meaning player 1 lost
-          	gameRes : gameKey[params['pick']]
+          	gameRes : handSigns
           }
         res.end(JSON.stringify(objToJson));
       }
