@@ -44,13 +44,13 @@ const server = http.createServer((req, res) => {
         // let handSigns = handSignNum === 1 ? 'rock': handSignNum === 2 ? 'paper' : 'scissors';
         switch(handSignNum){
         case 1:
-            handSigns = gameKey['rock'][pick]
+            handSigns = gameKey['rock']['pick']
             break;
         case 2:
-            handSigns = gameKey['paper'][pick]
+            handSigns = gameKey['paper']['pick']
           break;
         case 3:
-            handSigns = gameKey['scissors'][pick]
+            handSigns = gameKey['scissors']['pick']
           break;
           };
            
