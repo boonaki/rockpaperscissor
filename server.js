@@ -22,19 +22,7 @@ const server = http.createServer((req, res) => {
       if(gameSet.includes(params['pick'])){
         res.writeHead(200, {'Content-Type': 'application/json'});
         let handSignNum = Math.ceil(Math.random() * 3);
-        	switch(handSignNum){
-          	case 1:
-            	handSigns = 'scissors'
-            	break;
-            case 2:
-            	handSigns = 'rock'
-              break;
-            case 3:
-            	handSigns = 'paper'
-              break;
-          };
-          
-           const gameKey = {
+        const gameKey = {
     rock: {
       scissors: true,
       paper: false,
@@ -51,9 +39,23 @@ const server = http.createServer((req, res) => {
       rock: false,
     },
   };
+        	switch(handSignNum){
+          	case 1:
+            	handSigns = gameKey['scissors']
+            	break;
+            case 2:
+            	handSigns = gameKey['rock']
+              break;
+            case 3:
+            	handSigns = gameKey['paper']
+              break;
+          };
+          
+           
           const objToJson = {
             // example: rock vs paper = false meaning player 1 lost
           	compRes : gameKey[params['pick']][handSigns]
+            //gameRes : 
           }
         res.end(JSON.stringify(objToJson));
       }
