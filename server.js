@@ -26,34 +26,36 @@ const server = http.createServer((req, res) => {
         //create obj to compare comp ans / user ans
         const gameKey = {
           rock: {
-            scissors: true,
-            paper: false,
+            scissors: 'You win!',
+            paper: 'You lose...',
             rock: 'tie',
           },
           paper: {
-            scissors: false,
+            scissors: 'You lose...',
             paper: 'tie',
-            rock: true,
+            rock: 'You win!',
           },
           scissors: {
             scissors: 'tie',
-            paper: true,
-            rock: false,
+            paper: 'You win!',
+            rock: 'You lose...',
           },
         };
+        
         // let handSigns = handSignNum === 1 ? 'rock': handSignNum === 2 ? 'paper' : 'scissors';
+        let handSigns;
         switch(handSignNum){
         case 1:
-            handSigns = gameKey['rock']['pick']
+            handSigns = gameKey['rock'][params['pick']]
             break;
         case 2:
-            handSigns = gameKey['paper']['pick']
+            handSigns = gameKey['paper'][params['pick']]
           break;
         case 3:
-            handSigns = gameKey['scissors']['pick']
+            handSigns = gameKey['scissors'][params['pick']]
           break;
           };
-           
+           // ls
           const objToJson = {
             // example: rock vs paper = false meaning player 1 lost
           	gameRes : handSigns
