@@ -9,6 +9,4 @@ async function makeReq(){
 
   console.log(data);
   document.querySelector("#playerSelection").textContent = data.compRes
-  document.querySelector("#").textContent = data.status
-  document.querySelector("#").textContent = data.currentOccupation
 }
