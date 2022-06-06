@@ -12,3 +12,4 @@ This project is a collaborative effort where we built an API that is hosted on a
 Take a look at these other collaborative projects!
 
 **Tic Tac Toe** https://github.com/boonaki/HHTicTacToe
+**Rapper Names API** https://github.com/boonaki/rapper-names-api
